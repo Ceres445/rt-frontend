@@ -24,7 +24,7 @@ function getLSTString() {
 //All inputs and outputs are in decimal format
 
 //Takes Right Ascension (in hours) and Declination (in degrees) and returns Altitude (in degrees)
-function getAltitude(ra, dec) {
+export function getAltitude(ra, dec) {
     let LST = lstjs.getLST(new Date(), LONG);
     let HA = LST - ra;
     let alt = Math.asin(Math.sin(LAT * TO_RAD) * Math.sin(dec * TO_RAD) + Math.cos(LAT * TO_RAD) * Math.cos(dec * TO_RAD) * Math.cos(HA * 15 * TO_RAD));
@@ -32,7 +32,7 @@ function getAltitude(ra, dec) {
 }
 
 //Takes Right Ascension (in hours) and Declination (in degrees) and returns Azimuth (in degrees)
-function getAzimuth(ra, dec) {
+export function getAzimuth(ra, dec) {
     let LST = lstjs.getLST(new Date(), LONG);
     let HA = LST - ra;
     let x = -Math.sin(LAT * TO_RAD) * Math.cos(dec * TO_RAD) * Math.cos(HA * 15 * TO_RAD) + Math.cos(LAT * TO_RAD) * Math.sin(dec * TO_RAD);
